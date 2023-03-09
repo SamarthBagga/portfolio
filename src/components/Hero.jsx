@@ -2,6 +2,15 @@ import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import DownloadButton from "./DownloadButton";
+import file from './resume.docx';
+import { saveAs } from 'file-saver';
+import {React,button} from "react";
+import { Link } from "react-router-dom";
+function downloadFile() {
+  const fileBlob = new Blob([file], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  saveAs(fileBlob, 'resume.docx');
+}
 
 const Hero = () => {
   return (
@@ -20,6 +29,13 @@ const Hero = () => {
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             I develop full stack websites<br className='sm:block hidden' />
+          
+
+           
+           
+            
+            
+
             
           </p>
         </div>

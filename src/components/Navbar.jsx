@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import file from './resume.docx';
+import { saveAs } from 'file-saver';
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
+function downloadFile() {
+  const fileBlob = new Blob([file], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  saveAs(fileBlob, 'resume.docx');
+}
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -48,8 +53,10 @@ const Navbar = () => {
             <span className='sm:block hidden'></span>
           </p>
         </Link>
+        
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
+        <button onClick={downloadFile}>Download My Resume</button>
           {navLinks.map((nav) => (
             <li
               key={nav.id}
